@@ -1,0 +1,36 @@
+- name: install frontend with service
+  hosts: frontend
+  become: true 
+  tasks:
+  - name: intsall
+    ansible.builtin.package: # module used for install package
+      name: nginx
+      state: present # present means installed, absent means uninstall
+  - name: Start service nginx, if not started
+    ansible.builtin.service: # module for start the service 
+      name: nginx
+      state: started
+      enabled: yes # service will up automatically when server reboot
+  - name: remove directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: absent
+  - name: Download the frontend
+    ansible.builtin.get_url:
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      dest: /tmp/frontend.zip
+  - name: Unarchive a file that is already on the remote machine
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+  - name: Copy backend service file 
+    ansible.builtin.copy:
+      src: expense.conf
+      dest: /etc/nginx/default.d
+  - name: restart services
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
+
+  

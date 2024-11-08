@@ -42,6 +42,12 @@
       state: restarted
       daemon_reload: true
       name: backend
+  - name: install PyMySQL and cryptography
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      state: present
+      executable: pip3.9
   - name: Dump all databases to hostname.sql
     community.mysql.mysql_db:
       login_host: mysql.devopskiran.online

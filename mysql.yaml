@@ -16,7 +16,6 @@
       name:
       - PyMySQL
       - cryptography
-      - mysql
       state: present
       executable: pip3.9
   

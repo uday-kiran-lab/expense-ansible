@@ -9,7 +9,9 @@
     ansible.builtin.command: dnf module enable nodejs:20 -y
   - name: install node.js
     ansible.builtin.package:
-      name: nodejs
+      name: 
+      - nodejs
+      - mysql
       state: present
   - name: Create a user
     ansible.builtin.user:

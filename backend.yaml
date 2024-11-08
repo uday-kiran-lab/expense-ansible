@@ -46,14 +46,6 @@
       - PyMySQL
       state: present
       executable: pip3.9
-  # - name: import sql data
-  #   community.mysql.mysql_db:
-  #     login_host: mysql.devopskiran.online
-  #     login_user: root
-  #     login_password: ExpenseApp@1
-  #     state: import
-  #     name: all
-  #     target: /app/schema/backend.sql
   - name: import mysql data
     community.mysql.mysql_db:
       login_user: root

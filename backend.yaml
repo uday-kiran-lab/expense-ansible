@@ -34,7 +34,7 @@
       chdir: /app
   - name: Copy backend service file 
     ansible.builtin.copy:
-      src: /expense-ansible/backend.service
+      src: /home/ec2-user/expense-ansible
       dest: /etc/systemd/system
       remote_src: yes
   - name: Make sure a service unit is running

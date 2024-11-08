@@ -13,7 +13,9 @@
       enabled: yes
   - name: install pymsysql
     ansible.builtin.pip:
-      name: PyMySQL
+      name:
+      - pymsysql
+      - cryptography
       state: present
       executable: pip3.9
   - name: Collect all info except settings and users by root

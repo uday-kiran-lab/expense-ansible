@@ -11,10 +11,10 @@
       name: mysqld
       state: started
       enabled: yes
-  - name: install pymsysql
+  - name: install PyMySQL and cryptography
     ansible.builtin.pip:
       name:
-      - pymsysql
+      - PyMySQL
       - cryptography
       state: present
       executable: pip3.9

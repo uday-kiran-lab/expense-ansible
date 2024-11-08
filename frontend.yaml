@@ -19,6 +19,10 @@
     ansible.builtin.get_url:
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
       dest: /tmp/frontend.zip
+  - name: create directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
   - name: Unarchive a file that is already on the remote machine
     ansible.builtin.unarchive:
       src: /tmp/frontend.zip

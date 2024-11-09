@@ -24,8 +24,8 @@
       login_user: root
       login_password: ExpenseApp@1
       login_host: mysql.devopskiran.online
-      ignore_errors: true
-      register: sql_info
+    ignore_errors: true
+    register: sql_info
   - name: print error info
     ansible.builtin.debug:
       msg: "{{ sql_info }}"
